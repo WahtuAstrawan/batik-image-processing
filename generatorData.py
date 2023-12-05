@@ -64,7 +64,7 @@ if __name__ == "__main__":
     valid_ext = [".jpg", ".jpeg", ".png"]
 
     # Optimize the dir name choose with your device dir path
-    dir_name = "D:\Campus\TUGAS TI SEMESTER III\PCD Projek\\"
+    dir_name = "D:/Campus/TUGAS TI SEMESTER III/PCD Projek/batik-image-processing/"
     dir_choose = ""
     range_end = 0
     extension = ""
@@ -100,9 +100,9 @@ if __name__ == "__main__":
         while True:
             try_again = int(input(
                 "Apakah anda ingin mengenerate data lagi?\n 1.Iya\n 2.Tidak\n Pilihan anda : "))
-            if try_again == 2:
+            if try_again == 1:
                 break
-            elif try_again == 1:
+            elif try_again == 2:
                 exit()
             else:
                 print("Pilihan tidak valid. Masukkan 1 atau 2.")
