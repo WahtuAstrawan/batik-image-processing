@@ -36,14 +36,6 @@ def edgeDetection(image, dir_name):
     # Blur the image for better edge detection
     img_blur = cv2.GaussianBlur(img_gray, (3, 3), 0)
 
-    # Sobel Edge Detection
-    # Sobel Edge Detection on the X axis
-    sobelx = cv2.Sobel(src=img_blur, ddepth=cv2.CV_64F, dx=1, dy=0, ksize=5)
-    # Sobel Edge Detection on the Y axis
-    sobely = cv2.Sobel(src=img_blur, ddepth=cv2.CV_64F, dx=0, dy=1, ksize=5)
-    # Combined X and Y Sobel Edge Detection
-    sobelxy = cv2.Sobel(src=img_blur, ddepth=cv2.CV_64F, dx=1, dy=1, ksize=5)
-
     # Canny Edge Detection
     edges = cv2.Canny(image=img_blur, threshold1=100,
                       threshold2=200)  # Canny Edge Detection
