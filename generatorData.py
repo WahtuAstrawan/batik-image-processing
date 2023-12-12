@@ -29,6 +29,27 @@ def santuration(image, dir_name):
     cv2.imwrite(dir_name, saturated_image)
 
 
+def edgeDetection(image, dir_name):
+    dir_name += "_edge.jpg"
+    # Convert to graycsale
+    img_gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    # Blur the image for better edge detection
+    img_blur = cv2.GaussianBlur(img_gray, (3, 3), 0)
+
+    # Sobel Edge Detection
+    # Sobel Edge Detection on the X axis
+    sobelx = cv2.Sobel(src=img_blur, ddepth=cv2.CV_64F, dx=1, dy=0, ksize=5)
+    # Sobel Edge Detection on the Y axis
+    sobely = cv2.Sobel(src=img_blur, ddepth=cv2.CV_64F, dx=0, dy=1, ksize=5)
+    # Combined X and Y Sobel Edge Detection
+    sobelxy = cv2.Sobel(src=img_blur, ddepth=cv2.CV_64F, dx=1, dy=1, ksize=5)
+
+    # Canny Edge Detection
+    edges = cv2.Canny(image=img_blur, threshold1=100,
+                      threshold2=200)  # Canny Edge Detection
+    cv2.imwrite(dir_name, edges)
+
+
 def gaussianBlurr(image, dir_name):
     dir_name += "_blurr.jpg"
     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
@@ -48,6 +69,7 @@ def generate(dir_name, dir_choose, range_end, extension):
         santuration(image, save_dir)
         greyScale(image, save_dir)
         gaussianBlurr(image, save_dir)
+        edgeDetection(image, save_dir)
 
 
 if __name__ == "__main__":
@@ -99,7 +121,7 @@ if __name__ == "__main__":
             f"Data berhasil di generate disimpan pada folder {dir_choose}_generated")
         while True:
             try_again = int(input(
-                "Apakah anda ingin mengenerate data lagi?\n 1.Iya\n 2.Tidak\n Pilihan anda : "))
+                "Apakah anda ingin mengenerate data lagi?\n 1.Iya\n 2.Tidak\nPilihan anda : "))
             if try_again == 1:
                 break
             elif try_again == 2:
