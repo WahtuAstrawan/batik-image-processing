@@ -77,7 +77,7 @@ if __name__ == "__main__":
     valid_ext = [".jpg", ".jpeg", ".png"]
 
     # Optimize the dir name choose with your device dir path
-    dir_name = "D:/Campus/TUGAS TI SEMESTER III/PCD Projek/batik-image-processing/"
+    dir_name = "./batik-image-processing/"
     dir_choose = ""
     range_end = 0
     extension = ""
