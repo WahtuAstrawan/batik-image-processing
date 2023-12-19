@@ -42,10 +42,9 @@ def edgeDetection(image, dir_name):
     cv2.imwrite(dir_name, edges)
 
 
-def gaussianBlurr(image, dir_name):
+def medianBlurr(image, dir_name):
     dir_name += "_blurr.jpg"
-    image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-    denoised = cv2.GaussianBlur(image, (3, 3), 0)
+    denoised = cv2.medianBlur(image, 5)
     cv2.imwrite(dir_name, denoised)
 
 
@@ -59,7 +58,7 @@ def generate(dir_name, dir_choose, range_end, extension):
         save_dir = f"{generated_dir}{i}"
         santuration(image, save_dir)
         greyScale(image, save_dir)
-        gaussianBlurr(image, save_dir)
+        medianBlurr(image, save_dir)
         edgeDetection(image, save_dir)
 
 
